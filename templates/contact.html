@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block title %}Contact Us - M&M SLEEK HOME CLEANERS{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="bg-primary text-white py-5">
+    <div class="container">
+        <h1 class="display-4">Contact Us</h1>
+        <p class="lead">Get in touch with our team for professional cleaning services</p>
+    </div>
+</div>
+
+<!-- Contact Information -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+                <h2 class="mb-3">We're Here to Help</h2>
+                <p class="lead">Have questions about our services or want to schedule an appointment? Reach out to us using any of the methods below.</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <div class="contact-info shadow h-100">
+                    <h3 class="mb-4">Contact Information</h3>
+                    
+                    <div class="mb-4">
+                        <h5>Phone Numbers</h5>
+                        <p><i class="fas fa-phone"></i> 015 508304</p>
+                        <p><i class="fas fa-phone"></i> 0723 018 066</p>
+                        <p><i class="fas fa-phone"></i> 0791 584278</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Email</h5>
+                        <p><i class="fas fa-envelope"></i> info@mmsleekcleaners.com</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Business Hours</h5>
+                        <p><i class="fas fa-clock"></i> Monday - Friday: 8:00 AM - 6:00 PM</p>
+                        <p><i class="fas fa-clock"></i> Saturday: 9:00 AM - 4:00 PM</p>
+                        <p><i class="fas fa-clock"></i> Sunday: Closed</p>
+                    </div>
+                    
+                    <div>
+                        <h5>Follow Us</h5>
+                        <div class="d-flex">
+                            <a href="#" class="me-3 fs-4 text-primary"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="me-3 fs-4 text-primary"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="me-3 fs-4 text-primary"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card bg-dark shadow h-100">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4">Send Us a Message</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="service" class="form-label">Service Interested In</label>
+                                <select class="form-select" id="service">
+                                    <option selected>Select a service</option>
+                                    <option value="house">House Cleaning</option>
+                                    <option value="office">Office Cleaning</option>
+                                    <option value="carpet">Carpet Cleaning</option>
+                                    <option value="sofa">Sofa Cleaning</option>
+                                    <option value="car">Car Cleaning</option>
+                                    <option value="tank">Tank Cleaning</option>
+                                    <option value="plumbing">Plumbing Services</option>
+                                    <option value="electrical">Electrical Services</option>
+                                    <option value="other">Other Services</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="4" placeholder="Tell us about your cleaning needs"></textarea>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="bg-primary text-white section-padding">
+    <div class="container text-center">
+        <h2 class="mb-4">Need a Quote Right Away?</h2>
+        <p class="lead mb-4">Use our online calculator to get an instant estimate for your cleaning needs.</p>
+        <a href="{{ url_for('quotes') }}" class="btn btn-light btn-lg">Calculate Your Quote</a>
+    </div>
+</section>
+{% endblock %}

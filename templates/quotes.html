@@ -1,0 +1,208 @@
+{% extends "layout.html" %}
+
+{% block title %}Quote Calculator - M&M SLEEK HOME CLEANERS{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="bg-primary text-white py-5">
+    <div class="container">
+        <h1 class="display-4">Get Your Quote</h1>
+        <p class="lead">Calculate the cost of your cleaning services in just a few clicks</p>
+    </div>
+</div>
+
+<!-- Quote Calculator -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+                <h2 class="mb-3">Cleaning Service Calculator</h2>
+                <p>Our interactive calculator provides an instant estimate based on your specific needs. Select the services you're interested in and answer a few questions to get your personalized quote.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow-lg border-0 bg-dark mb-5">
+                    <div class="card-body p-4 p-md-5">
+                        <!-- Progress Bar -->
+                        <div class="progress mb-4" style="height: 6px;">
+                            <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        
+                        <!-- Error message container -->
+                        <div id="error-container" class="alert alert-danger d-none mb-4">
+                            <p id="error-message" class="mb-0"></p>
+                        </div>
+                        
+                        <!-- Questions container -->
+                        <div id="questions-container"></div>
+                        
+                        <!-- Results container -->
+                        <div id="result"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card bg-dark shadow border-0">
+                    <div class="card-body p-4">
+                        <h3 class="card-title mb-4">How It Works</h3>
+                        <div class="row g-4">
+                            <div class="col-md-4 text-center">
+                                <div class="rounded-circle bg-primary d-inline-flex justify-content-center align-items-center mb-3" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-mouse-pointer fa-2x text-white"></i>
+                                </div>
+                                <h5>1. Select Services</h5>
+                                <p>Choose from our range of cleaning services you need.</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="rounded-circle bg-primary d-inline-flex justify-content-center align-items-center mb-3" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-list-ol fa-2x text-white"></i>
+                                </div>
+                                <h5>2. Answer Questions</h5>
+                                <p>Provide details about your specific cleaning needs.</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="rounded-circle bg-primary d-inline-flex justify-content-center align-items-center mb-3" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-check-circle fa-2x text-white"></i>
+                                </div>
+                                <h5>3. Get Your Quote</h5>
+                                <p>Receive an instant estimate for your selected services.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Book Now Modal for WhatsApp -->
+<div class="modal fade" id="whatsappModal" tabindex="-1" aria-labelledby="whatsappModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="whatsappModalLabel">Contact via WhatsApp</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>You'll be redirected to WhatsApp to chat with our customer service.</p>
+                <p>Please choose a number to contact:</p>
+                <div class="d-grid gap-2">
+                    <a href="https://wa.me/254155508304" class="btn btn-success" target="_blank">
+                        <i class="fab fa-whatsapp me-2"></i> 015 508304
+                    </a>
+                    <a href="https://wa.me/254723018066" class="btn btn-success" target="_blank">
+                        <i class="fab fa-whatsapp me-2"></i> 0723 018 066
+                    </a>
+                    <a href="https://wa.me/254791584278" class="btn btn-success" target="_blank">
+                        <i class="fab fa-whatsapp me-2"></i> 0791 584278
+                    </a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Book Now Modal for Phone -->
+<div class="modal fade" id="phoneModal" tabindex="-1" aria-labelledby="phoneModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="phoneModalLabel">Call Us Now</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Please select a number to call:</p>
+                <div class="d-grid gap-2">
+                    <a href="tel:+254155508304" class="btn btn-primary">
+                        <i class="fas fa-phone me-2"></i> 015 508304
+                    </a>
+                    <a href="tel:+254723018066" class="btn btn-primary">
+                        <i class="fas fa-phone me-2"></i> 0723 018 066
+                    </a>
+                    <a href="tel:+254791584278" class="btn btn-primary">
+                        <i class="fas fa-phone me-2"></i> 0791 584278
+                    </a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/calculator.js') }}"></script>
+<script>
+    // Function to handle the Book Now button action
+    function showBookingOptions() {
+        // Create the options container
+        const optionsContainer = document.createElement('div');
+        optionsContainer.className = 'book-options-container text-center mt-3';
+        
+        // Create the buttons
+        const whatsappBtn = document.createElement('button');
+        whatsappBtn.className = 'btn btn-success me-2';
+        whatsappBtn.innerHTML = '<i class="fab fa-whatsapp me-2"></i> Chat on WhatsApp';
+        whatsappBtn.onclick = function() {
+            const whatsappModal = new bootstrap.Modal(document.getElementById('whatsappModal'));
+            whatsappModal.show();
+        };
+        
+        const phoneBtn = document.createElement('button');
+        phoneBtn.className = 'btn btn-primary';
+        phoneBtn.innerHTML = '<i class="fas fa-phone me-2"></i> Call Us';
+        phoneBtn.onclick = function() {
+            const phoneModal = new bootstrap.Modal(document.getElementById('phoneModal'));
+            phoneModal.show();
+        };
+        
+        // Append buttons to container
+        optionsContainer.appendChild(whatsappBtn);
+        optionsContainer.appendChild(phoneBtn);
+        
+        return optionsContainer;
+    }
+    
+    // Add event listener to the document to capture clicks on Book Now buttons
+    document.addEventListener('click', function(event) {
+        // Check if the clicked element is a "Book Now" button
+        if (event.target.tagName === 'A' && event.target.textContent.trim() === 'Book Now') {
+            // Prevent default anchor behavior
+            event.preventDefault();
+            
+            // Replace the button with the options
+            const parentElement = event.target.parentElement;
+            const bookOptions = showBookingOptions();
+            
+            // Remove the original button
+            event.target.remove();
+            
+            // Add the options container
+            parentElement.appendChild(bookOptions);
+        }
+    });
+    
+    // Make displayServiceSelection globally accessible for the "Start Over" button
+    window.displayServiceSelection = function() {
+        // Find the calculator's init function and call it
+        if (typeof initializeCalculator === 'function') {
+            // Refresh pricing data
+            fetch('/static/data/pricing.json')
+                .then(response => response.json())
+                .then(data => {
+                    initializeCalculator(data);
+                });
+        }
+    };
+</script>
+{% endblock %}

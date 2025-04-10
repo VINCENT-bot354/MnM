@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             // Initialize the calculator with the pricing data
-            initializeCalculator(data);
+            window.initializeCalculator(data);
         })
         .catch(error => {
             console.error('Error loading pricing data:', error);
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     // Initialize the calculator with pricing data
-    function initializeCalculator(pricingData) {
+    window.initializeCalculator = function(pricingData) {
         // Setup for question flow
         let currentQuestionIndex = 0;
         let answers = {};
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Create the service selection card
             const card = document.createElement("div");
-            card.className = "card shadow-sm mb-4";
+            card.className = "card shadow-sm mb-4 bg-dark border-0";
             
             const cardBody = document.createElement("div");
             cardBody.className = "card-body";
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cardBody.appendChild(cardText);
             
             // Create checkboxes for each service type
-            const services = ["House", "Sofa", "Car", "Tank", "Other"];
+            const services = ["House", "Office", "Sofa", "Carpet", "Car", "Tank", "Plumbing", "Electrical", "Other"];
             const checkboxContainer = document.createElement("div");
             checkboxContainer.className = "mb-4";
             
@@ -127,12 +127,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Display questions specific to this service
                 if (service === "House") {
                     displayHouseCleaningType();
+                } else if (service === "Office") {
+                    displayOfficeQuestions();
                 } else if (service === "Sofa") {
                     displaySofaQuestions();
+                } else if (service === "Carpet") {
+                    displayCarpetQuestions();
                 } else if (service === "Car") {
                     displayCarQuestions();
+                } else if (service === "Tank") {
+                    displayTankQuestions();
                 } else {
-                    // For Tank and Other, no additional questions needed
+                    // For Plumbing, Electrical, and Other, no additional questions needed
                     currentServiceIndex++;
                     processNextService();
                 }
@@ -147,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
             questionContainer.innerHTML = '';
             
             const card = document.createElement("div");
-            card.className = "card shadow-sm mb-4";
+            card.className = "card shadow-sm mb-4 bg-dark border-0";
             
             const cardBody = document.createElement("div");
             cardBody.className = "card-body";
@@ -160,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const optionsDiv = document.createElement("div");
             optionsDiv.className = "d-grid gap-2";
             
-            const cleaningTypes = ["Standard", "Deep Cleaning", "Floor Only"];
+            const cleaningTypes = ["Standard", "Deep Cleaning"];
             
             cleaningTypes.forEach(type => {
                 const button = document.createElement("button");
@@ -184,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
             questionContainer.innerHTML = '';
             
             const card = document.createElement("div");
-            card.className = "card shadow-sm mb-4";
+            card.className = "card shadow-sm mb-4 bg-dark border-0";
             
             const cardBody = document.createElement("div");
             cardBody.className = "card-body";
@@ -216,12 +222,49 @@ document.addEventListener('DOMContentLoaded', function() {
             questionContainer.appendChild(card);
         }
 
+        // Display office questions
+        function displayOfficeQuestions() {
+            questionContainer.innerHTML = '';
+            
+            const card = document.createElement("div");
+            card.className = "card shadow-sm mb-4 bg-dark border-0";
+            
+            const cardBody = document.createElement("div");
+            cardBody.className = "card-body";
+            
+            const cardTitle = document.createElement("h5");
+            cardTitle.className = "card-title mb-4";
+            cardTitle.textContent = "What is the size of your office?";
+            cardBody.appendChild(cardTitle);
+            
+            const optionsDiv = document.createElement("div");
+            optionsDiv.className = "d-grid gap-2";
+            
+            const officeOptions = ["Small", "Medium", "Large"];
+            
+            officeOptions.forEach(option => {
+                const button = document.createElement("button");
+                button.className = "btn btn-outline-primary";
+                button.textContent = option;
+                button.onclick = () => {
+                    answers[`office-size-${currentServiceIndex}`] = option;
+                    currentServiceIndex++;
+                    processNextService();
+                };
+                optionsDiv.appendChild(button);
+            });
+            
+            cardBody.appendChild(optionsDiv);
+            card.appendChild(cardBody);
+            questionContainer.appendChild(card);
+        }
+
         // Display sofa questions
         function displaySofaQuestions() {
             questionContainer.innerHTML = '';
             
             const card = document.createElement("div");
-            card.className = "card shadow-sm mb-4";
+            card.className = "card shadow-sm mb-4 bg-dark border-0";
             
             const cardBody = document.createElement("div");
             cardBody.className = "card-body";
@@ -272,12 +315,68 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         }
 
+        // Display carpet questions
+        function displayCarpetQuestions() {
+            questionContainer.innerHTML = '';
+            
+            const card = document.createElement("div");
+            card.className = "card shadow-sm mb-4 bg-dark border-0";
+            
+            const cardBody = document.createElement("div");
+            cardBody.className = "card-body";
+            
+            const cardTitle = document.createElement("h5");
+            cardTitle.className = "card-title mb-4";
+            cardTitle.textContent = "How many square meters of carpet need cleaning?";
+            cardBody.appendChild(cardTitle);
+            
+            const cardText = document.createElement("p");
+            cardText.className = "card-text mb-3 text-muted";
+            cardText.textContent = "Enter the approximate square meters";
+            cardBody.appendChild(cardText);
+            
+            // Input for carpet area
+            const inputGroup = document.createElement("div");
+            inputGroup.className = "input-group mb-3";
+            
+            const input = document.createElement("input");
+            input.type = "number";
+            input.className = "form-control";
+            input.id = "carpet-sqm-input";
+            input.min = "1";
+            input.value = "10";
+            
+            const continueBtn = document.createElement("button");
+            continueBtn.className = "btn btn-primary";
+            continueBtn.textContent = "Continue";
+            
+            inputGroup.appendChild(input);
+            inputGroup.appendChild(continueBtn);
+            
+            cardBody.appendChild(inputGroup);
+            card.appendChild(cardBody);
+            questionContainer.appendChild(card);
+            
+            // Handle continue button click
+            continueBtn.onclick = () => {
+                const sqm = document.getElementById("carpet-sqm-input").value;
+                if (sqm < 1) {
+                    alert("Please enter at least 1 square meter");
+                    return;
+                }
+                
+                answers[`carpet-sqm-${currentServiceIndex}`] = sqm;
+                currentServiceIndex++;
+                processNextService();
+            };
+        }
+
         // Display car questions
         function displayCarQuestions() {
             questionContainer.innerHTML = '';
             
             const card = document.createElement("div");
-            card.className = "card shadow-sm mb-4";
+            card.className = "card shadow-sm mb-4 bg-dark border-0";
             
             const cardBody = document.createElement("div");
             cardBody.className = "card-body";
@@ -309,6 +408,62 @@ document.addEventListener('DOMContentLoaded', function() {
             questionContainer.appendChild(card);
         }
 
+        // Display tank questions
+        function displayTankQuestions() {
+            questionContainer.innerHTML = '';
+            
+            const card = document.createElement("div");
+            card.className = "card shadow-sm mb-4 bg-dark border-0";
+            
+            const cardBody = document.createElement("div");
+            cardBody.className = "card-body";
+            
+            const cardTitle = document.createElement("h5");
+            cardTitle.className = "card-title mb-4";
+            cardTitle.textContent = "What is the volume of your tank in liters?";
+            cardBody.appendChild(cardTitle);
+            
+            const cardText = document.createElement("p");
+            cardText.className = "card-text mb-3 text-muted";
+            cardText.textContent = "Enter the capacity of your water tank";
+            cardBody.appendChild(cardText);
+            
+            // Input for tank volume
+            const inputGroup = document.createElement("div");
+            inputGroup.className = "input-group mb-3";
+            
+            const input = document.createElement("input");
+            input.type = "number";
+            input.className = "form-control";
+            input.id = "tank-volume-input";
+            input.min = "1";
+            input.value = "1000";
+            
+            const continueBtn = document.createElement("button");
+            continueBtn.className = "btn btn-primary";
+            continueBtn.textContent = "Continue";
+            
+            inputGroup.appendChild(input);
+            inputGroup.appendChild(continueBtn);
+            
+            cardBody.appendChild(inputGroup);
+            card.appendChild(cardBody);
+            questionContainer.appendChild(card);
+            
+            // Handle continue button click
+            continueBtn.onclick = () => {
+                const volume = document.getElementById("tank-volume-input").value;
+                if (volume < 1) {
+                    alert("Please enter at least 1 liter");
+                    return;
+                }
+                
+                answers[`tank-volume-${currentServiceIndex}`] = volume;
+                currentServiceIndex++;
+                processNextService();
+            };
+        }
+
         // Function to update the progress bar
         function updateProgressBar(percentage) {
             const progressBar = document.getElementById('progress-bar');
@@ -338,12 +493,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     serviceDetail.bathrooms = bathrooms;
                     serviceDetail.price = servicePrice;
                 } 
+                else if (service === "Office") {
+                    const officeSize = answers[`office-size-${i}`];
+                    servicePrice = pricingData["Office"][officeSize];
+                    serviceDetail.size = officeSize;
+                    serviceDetail.price = servicePrice;
+                }
                 else if (service === "Sofa") {
                     const seats = parseInt(answers[`sofa-seats-${i}`]);
                     servicePrice = Math.max(pricingData["Sofa"]["min_price"], seats * pricingData["Sofa"]["price_per_seat"]);
                     serviceDetail.seats = seats;
                     serviceDetail.price = servicePrice;
                 } 
+                else if (service === "Carpet") {
+                    const sqm = parseInt(answers[`carpet-sqm-${i}`]);
+                    servicePrice = Math.max(pricingData["Carpet"]["min_price"], sqm * pricingData["Carpet"]["price_per_sqm"]);
+                    serviceDetail.sqm = sqm;
+                    serviceDetail.price = servicePrice;
+                }
                 else if (service === "Car") {
                     const carType = answers[`car-type-${i}`];
                     servicePrice = pricingData["Car"][carType];
@@ -351,7 +518,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     serviceDetail.price = servicePrice;
                 } 
                 else if (service === "Tank") {
-                    servicePrice = pricingData["Tank"];
+                    const volume = parseInt(answers[`tank-volume-${i}`]);
+                    servicePrice = Math.max(pricingData["Tank"]["min_price"], volume * pricingData["Tank"]["price_per_liter"]);
+                    serviceDetail.volume = volume;
+                    serviceDetail.price = servicePrice;
+                }
+                else if (service === "Plumbing") {
+                    servicePrice = pricingData["Plumbing"];
+                    serviceDetail.price = servicePrice;
+                }
+                else if (service === "Electrical") {
+                    servicePrice = pricingData["Electrical"];
                     serviceDetail.price = servicePrice;
                 }
                 else if (service === "Other") {
@@ -373,16 +550,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (detail.service === "House") {
                     serviceDescription = `House (${detail.type}, ${detail.bathrooms} bathrooms)`;
+                } else if (detail.service === "Office") {
+                    serviceDescription = `Office (${detail.size})`;
                 } else if (detail.service === "Sofa") {
                     serviceDescription = `Sofa (${detail.seats} seats)`;
+                } else if (detail.service === "Carpet") {
+                    serviceDescription = `Carpet (${detail.sqm} sq meters)`;
                 } else if (detail.service === "Car") {
                     serviceDescription = `Car (${detail.type})`;
+                } else if (detail.service === "Tank") {
+                    serviceDescription = `Tank (${detail.volume} liters)`;
                 } else {
                     serviceDescription = detail.service;
                 }
                 
                 detailsHTML += `
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-dark text-white border-light">
                         <span>${serviceDescription}</span>
                         <span class="badge bg-primary rounded-pill">$${detail.price}</span>
                     </li>
@@ -392,7 +575,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show the result
             const resultContainer = document.getElementById("result");
             resultContainer.innerHTML = `
-                <div class="card border-success mb-4 shadow">
+                <div class="card border-success mb-4 shadow bg-dark text-white border-0">
                     <div class="card-header bg-success text-white">
                         <h5 class="m-0">Your Quote</h5>
                     </div>
@@ -401,7 +584,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p class="card-text">Thank you for using our quote calculator! Below is a summary of your selections:</p>
                         <ul class="list-group list-group-flush mb-4">
                             ${detailsHTML}
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-dark text-white border-light">
                                 <strong>Total</strong>
                                 <strong>$${totalPrice}</strong>
                             </li>

@@ -1,0 +1,191 @@
+{% extends "layout.html" %}
+
+{% block title %}Blog - M&M SLEEK HOME CLEANERS{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="bg-primary text-white py-5">
+    <div class="container">
+        <h1 class="display-4">Our Blog</h1>
+        <p class="lead">Cleaning tips, news, and industry insights</p>
+    </div>
+</div>
+
+<!-- Blog Posts -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-8">
+                <!-- Featured Post -->
+                <div class="card bg-dark mb-5">
+                    <div class="card-body">
+                        <div class="row g-0">
+                            <div class="col-md-5">
+                                <img src="https://via.placeholder.com/400x300/212529/FFFFFF?text=Cleaning+Tips" alt="Featured Blog Post" class="img-fluid rounded">
+                            </div>
+                            <div class="col-md-7 ps-md-4">
+                                <h6 class="text-primary mb-2">April 1, 2025</h6>
+                                <h3 class="card-title">10 Cleaning Habits That Will Transform Your Home</h3>
+                                <p class="card-text">Discover daily habits that can keep your home cleaner with minimal effort. These small changes to your routine will make a big difference in the cleanliness of your living space.</p>
+                                <p class="card-text">Learn how to incorporate these habits into your busy schedule and enjoy a consistently clean and organized home.</p>
+                                <a href="#" class="btn btn-primary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog List -->
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card bg-dark blog-post">
+                            <img src="https://via.placeholder.com/400x250/212529/FFFFFF?text=Office+Cleaning" class="card-img-top" alt="Blog post image">
+                            <div class="card-body">
+                                <h6 class="text-primary mb-2">March 15, 2025</h6>
+                                <h4 class="card-title">The Benefits of Professional Office Cleaning</h4>
+                                <p class="card-text">A clean workplace doesn't just look good—it can boost productivity, reduce sick days, and improve employee morale.</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card bg-dark blog-post">
+                            <img src="https://via.placeholder.com/400x250/212529/FFFFFF?text=Green+Cleaning" class="card-img-top" alt="Blog post image">
+                            <div class="card-body">
+                                <h6 class="text-primary mb-2">March 8, 2025</h6>
+                                <h4 class="card-title">Eco-Friendly Cleaning: Better for You and the Planet</h4>
+                                <p class="card-text">Discover how green cleaning products can provide a safer environment for your family while reducing your environmental footprint.</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card bg-dark blog-post">
+                            <img src="https://via.placeholder.com/400x250/212529/FFFFFF?text=Carpet+Care" class="card-img-top" alt="Blog post image">
+                            <div class="card-body">
+                                <h6 class="text-primary mb-2">February 25, 2025</h6>
+                                <h4 class="card-title">How to Extend the Life of Your Carpets</h4>
+                                <p class="card-text">Learn proper maintenance techniques and how often you should schedule professional cleanings to keep your carpets looking new.</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card bg-dark blog-post">
+                            <img src="https://via.placeholder.com/400x250/212529/FFFFFF?text=Spring+Cleaning" class="card-img-top" alt="Blog post image">
+                            <div class="card-body">
+                                <h6 class="text-primary mb-2">February 12, 2025</h6>
+                                <h4 class="card-title">Your Ultimate Spring Cleaning Checklist</h4>
+                                <p class="card-text">Get organized with our room-by-room spring cleaning guide that will help you tackle every area of your home efficiently.</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <nav class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                <!-- Search -->
+                <div class="card bg-dark mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Search</h5>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search blog...">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Categories -->
+                <div class="card bg-dark mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Categories</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between align-items-center">
+                                Home Cleaning
+                                <span class="badge bg-primary rounded-pill">12</span>
+                            </li>
+                            <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between align-items-center">
+                                Office Cleaning
+                                <span class="badge bg-primary rounded-pill">8</span>
+                            </li>
+                            <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between align-items-center">
+                                Carpet & Upholstery
+                                <span class="badge bg-primary rounded-pill">6</span>
+                            </li>
+                            <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between align-items-center">
+                                Cleaning Tips
+                                <span class="badge bg-primary rounded-pill">15</span>
+                            </li>
+                            <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between align-items-center">
+                                Green Cleaning
+                                <span class="badge bg-primary rounded-pill">4</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Popular Posts -->
+                <div class="card bg-dark mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Popular Posts</h5>
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-light">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">How Often Should You Clean Your Bathroom?</h6>
+                                </div>
+                                <small class="text-muted">3 weeks ago</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-light">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">5 Spots You're Forgetting to Clean</h6>
+                                </div>
+                                <small class="text-muted">1 month ago</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action bg-dark text-white border-light">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Natural Cleaning Solutions That Actually Work</h6>
+                                </div>
+                                <small class="text-muted">2 months ago</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Newsletter -->
+                <div class="card bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">Subscribe to Our Newsletter</h5>
+                        <p class="card-text">Get the latest cleaning tips and exclusive offers delivered to your inbox.</p>
+                        <form>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Enter your email">
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
