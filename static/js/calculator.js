@@ -211,7 +211,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.textContent = option;
                 button.onclick = () => {
                     answers[`bedrooms-${currentServiceIndex}`] = option;
-                    displayBathroomQuestion();
+                    currentServiceIndex++;
+                    processNextService();
                 };
                 optionsDiv.appendChild(button);
             });
@@ -524,13 +525,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (service === "House") {
                     const cleaningType = answers[`house-cleaning-type-${i}`];
                     const bedrooms = answers[`bedrooms-${i}`];
-                    const bathrooms = answers[`bathrooms-${i}`];
-                    const bedroomPrice = pricingData["House"][cleaningType]["bedrooms"][bedrooms];
-                    const bathroomPrice = pricingData["House"][cleaningType]["bathrooms"][bathrooms];
-                    servicePrice = bedroomPrice + bathroomPrice;
+                    servicePrice = pricingData["House"][cleaningType]["bedrooms"][bedrooms];
                     serviceDetail.type = cleaningType;
                     serviceDetail.bedrooms = bedrooms;
-                    serviceDetail.bathrooms = bathrooms;
                     serviceDetail.price = servicePrice;
                 } 
                 else if (service === "Office") {
@@ -589,7 +586,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let serviceDescription = '';
                 
                 if (detail.service === "House") {
-                    serviceDescription = `House (${detail.type}, ${detail.bedrooms} bedrooms, ${detail.bathrooms} bathrooms)`;
+                    serviceDescription = `House (${detail.type}, ${detail.bedrooms} bedrooms)`;
                 } else if (detail.service === "Office") {
                     serviceDescription = `Office (${detail.size})`;
                 } else if (detail.service === "Sofa") {
