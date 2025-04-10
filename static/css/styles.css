@@ -154,6 +154,13 @@ main {
     border-radius: 3px;
 }
 
+/* Book Now options */
+.book-options-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .hero-section {
@@ -162,6 +169,10 @@ main {
     
     .section-padding {
         padding: 3rem 0;
+    }
+    
+    .book-options-container {
+        flex-direction: column;
     }
 }
 
