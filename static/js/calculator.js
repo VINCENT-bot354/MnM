@@ -622,7 +622,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 detailsHTML += `
                     <li class="list-group-item d-flex justify-content-between align-items-center bg-dark text-white border-light">
                         <span>${serviceDescription}</span>
-                        <span class="badge bg-primary rounded-pill">$${detail.price}</span>
+                        <span class="badge bg-primary rounded-pill">KES ${detail.price}</span>
                     </li>
                 `;
             });
@@ -635,13 +635,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         <h5 class="m-0">Your Quote</h5>
                     </div>
                     <div class="card-body">
-                        <h2 class="card-title text-center mb-4">$${totalPrice}</h2>
+                        <h2 class="card-title text-center mb-4">KES ${totalPrice}</h2>
                         <p class="card-text">Thank you for using our quote calculator! Below is a summary of your selections:</p>
                         <ul class="list-group list-group-flush mb-4">
                             ${detailsHTML}
                             <li class="list-group-item d-flex justify-content-between align-items-center bg-dark text-white border-light">
                                 <strong>Total</strong>
-                                <strong>$${totalPrice}</strong>
+                                <strong>KES ${totalPrice}</strong>
                             </li>
                         </ul>
                         <div class="d-grid gap-2">
