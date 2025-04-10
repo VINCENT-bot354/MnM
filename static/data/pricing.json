@@ -24,8 +24,9 @@
         "Large": 5000
     },
     "Carpet": {
-        "price_per_sqfoot": 15,
-        "min_price": 450
+        "price_per_sqft": 15,
+        "min_price": 450,
+        "unit": "per square foot"
     },
     "Sofa": {
         "price_per_seat": 500,

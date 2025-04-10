@@ -73,15 +73,15 @@
                         <ul class="list-group list-group-flush bg-transparent">
                             <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between">
                                 <span>Small Office (up to 1,000 sq ft)</span>
-                                <span class="fw-bold">${{ pricing.Office.Small }}</span>
+                                <span class="fw-bold">KES {{ pricing.Office.Small }}</span>
                             </li>
                             <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between">
                                 <span>Medium Office (1,000-2,500 sq ft)</span>
-                                <span class="fw-bold">${{ pricing.Office.Medium }}</span>
+                                <span class="fw-bold">KES {{ pricing.Office.Medium }}</span>
                             </li>
                             <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between">
                                 <span>Large Office (2,500+ sq ft)</span>
-                                <span class="fw-bold">${{ pricing.Office.Large }}</span>
+                                <span class="fw-bold">KES {{ pricing.Office.Large }}</span>
                             </li>
                         </ul>
                     </div>
@@ -130,7 +130,7 @@
                                 <h5 class="mb-0">Sofa Cleaning</h5>
                             </div>
                             <div class="card-body">
-                                <p><span class="highlight">${{ pricing.Sofa.price_per_seat }}</span> per seat (minimum ${{ pricing.Sofa.min_price }})</p>
+                                <p><span class="highlight">KES {{ pricing.Sofa.price_per_seat }}</span> per seat (minimum KES {{ pricing.Sofa.min_price }})</p>
                                 <p class="small">Price depends on size and condition. All fabrics treated with care.</p>
                             </div>
                         </div>
@@ -141,7 +141,7 @@
                                 <h5 class="mb-0">Carpet Cleaning</h5>
                             </div>
                             <div class="card-body">
-                                <p><span class="highlight">${{ pricing.Carpet.price_per_sqm }}</span> per square meter (minimum ${{ pricing.Carpet.min_price }})</p>
+                                <p><span class="highlight">KES {{ pricing.Carpet.price_per_sqft }}</span> per square foot (minimum KES {{ pricing.Carpet.min_price }})</p>
                                 <p class="small">Deep steam cleaning that removes stains and refreshes your carpets.</p>
                             </div>
                         </div>
