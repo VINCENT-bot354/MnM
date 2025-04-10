@@ -18,14 +18,35 @@
         <div class="row mb-5 align-items-center" id="house">
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <h2 class="mb-3">House Cleaning</h2>
-                <p class="lead">We offer comprehensive house cleaning services that leave your home spotless and fresh.</p>
+                <p class="lead">We offer comprehensive deep cleaning services that leave your home spotless and fresh.</p>
                 <div class="card bg-dark text-white">
                     <div class="card-header">
-                        <h5 class="mb-0">Get a Custom Quote</h5>
+                        <h5 class="mb-0">Deep Cleaning Prices</h5>
                     </div>
                     <div class="card-body">
-                        <p class="mb-3">Our pricing is based on the size and specific requirements of your home. Click below to get an accurate quote for your needs.</p>
-                        <a href="{{ url_for('quotes') }}" class="btn btn-primary">Calculate Quote</a>
+                        <ul class="list-group list-group-flush bg-transparent">
+                            <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between">
+                                <span>1 Bedroom</span>
+                                <span class="fw-bold">KES {{ pricing.House["Deep Cleaning"].bedrooms["1"] }}</span>
+                            </li>
+                            <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between">
+                                <span>2 Bedrooms</span>
+                                <span class="fw-bold">KES {{ pricing.House["Deep Cleaning"].bedrooms["2"] }}</span>
+                            </li>
+                            <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between">
+                                <span>3 Bedrooms</span>
+                                <span class="fw-bold">KES {{ pricing.House["Deep Cleaning"].bedrooms["3"] }}</span>
+                            </li>
+                            <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between">
+                                <span>4 Bedrooms</span>
+                                <span class="fw-bold">KES {{ pricing.House["Deep Cleaning"].bedrooms["4"] }}</span>
+                            </li>
+                            <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between">
+                                <span>5+ Bedrooms</span>
+                                <span class="fw-bold">{{ pricing.House["Deep Cleaning"].bedrooms["5+"] }}</span>
+                            </li>
+                        </ul>
+                        <a href="{{ url_for('quotes') }}" class="btn btn-primary mt-3">Get Custom Quote</a>
                     </div>
                 </div>
             </div>
