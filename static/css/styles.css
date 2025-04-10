@@ -209,3 +209,10 @@ main {
         padding: 2rem 0;
     }
 }
+#themeToggle {
+    display: none;  /* This hides the checkbox */
+}
+
+#themeToggle + .form-check-label {
+    display: none;  /* This hides the label next to the checkbox */
+}
