@@ -35,5 +35,10 @@
     },
     "Plumbing": 0,
     "Electrical": 0,
-    "Other": 0
+    "Other": 0,
+    "Moving": {
+        "Small": 15000,
+        "Medium": 25000,
+        "Large": "Contact for Quote"
+    }
 }
