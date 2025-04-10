@@ -175,6 +175,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.onclick = () => {
                     currentCleaningType = type;
                     answers[`house-cleaning-type-${currentServiceIndex}`] = type;
+                    displayBedroomQuestion();
+                };
+                optionsDiv.appendChild(button);
+            });
+            
+            cardBody.appendChild(optionsDiv);
+            card.appendChild(cardBody);
+            questionContainer.appendChild(card);
+        }
+
+        // Display bedroom question for house cleaning
+        function displayBedroomQuestion() {
+            questionContainer.innerHTML = '';
+            
+            const card = document.createElement("div");
+            card.className = "card shadow-sm mb-4 bg-dark border-0";
+            
+            const cardBody = document.createElement("div");
+            cardBody.className = "card-body";
+            
+            const cardTitle = document.createElement("h5");
+            cardTitle.className = "card-title mb-4";
+            cardTitle.textContent = `How many bedrooms in the house? (${currentCleaningType})`;
+            cardBody.appendChild(cardTitle);
+            
+            const optionsDiv = document.createElement("div");
+            optionsDiv.className = "d-grid gap-2";
+            
+            const bedroomOptions = ["1", "2", "3", "4+"];
+            
+            bedroomOptions.forEach(option => {
+                const button = document.createElement("button");
+                button.className = "btn btn-outline-primary";
+                button.textContent = option;
+                button.onclick = () => {
+                    answers[`bedrooms-${currentServiceIndex}`] = option;
                     displayBathroomQuestion();
                 };
                 optionsDiv.appendChild(button);
@@ -185,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
             questionContainer.appendChild(card);
         }
 
-        // Display bathroom question for house cleaning
+            // Display bathroom question for house cleaning
         function displayBathroomQuestion() {
             questionContainer.innerHTML = '';
             
@@ -487,9 +523,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (service === "House") {
                     const cleaningType = answers[`house-cleaning-type-${i}`];
+                    const bedrooms = answers[`bedrooms-${i}`];
                     const bathrooms = answers[`bathrooms-${i}`];
-                    servicePrice = pricingData["House"][cleaningType][bathrooms];
+                    const bedroomPrice = pricingData["House"][cleaningType]["bedrooms"][bedrooms];
+                    const bathroomPrice = pricingData["House"][cleaningType]["bathrooms"][bathrooms];
+                    servicePrice = bedroomPrice + bathroomPrice;
                     serviceDetail.type = cleaningType;
+                    serviceDetail.bedrooms = bedrooms;
                     serviceDetail.bathrooms = bathrooms;
                     serviceDetail.price = servicePrice;
                 } 
@@ -549,7 +589,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let serviceDescription = '';
                 
                 if (detail.service === "House") {
-                    serviceDescription = `House (${detail.type}, ${detail.bathrooms} bathrooms)`;
+                    serviceDescription = `House (${detail.type}, ${detail.bedrooms} bedrooms, ${detail.bathrooms} bathrooms)`;
                 } else if (detail.service === "Office") {
                     serviceDescription = `Office (${detail.size})`;
                 } else if (detail.service === "Sofa") {
