@@ -40,6 +40,24 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedServices = [];
             currentServiceIndex = 0;
             updateProgressBar(0);
+            
+            // Function to show contact message for 4+ bedrooms
+            window.showContactMessage = function() {
+                const resultContainer = document.getElementById("result");
+                resultContainer.innerHTML = `
+                    <div class="card border-info mb-4 shadow bg-dark text-white border-0">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="m-0">Contact Us</h5>
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="mb-4">For 4+ bedroom properties</h4>
+                            <p class="card-text">Please contact us directly for a custom quote tailored to your specific needs.</p>
+                            <a href="/contact" class="btn btn-primary mt-3">Contact Us</a>
+                        </div>
+                    </div>
+                `;
+                questionContainer.innerHTML = '';
+            };
 
             // Create the service selection card
             const card = document.createElement("div");
@@ -206,9 +224,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 button.className = "btn btn-outline-primary";
                 button.textContent = option;
                 button.onclick = () => {
-                    answers[`bedrooms-${currentServiceIndex}`] = option;
-                    currentServiceIndex++;
-                    processNextService();
+                    if (option === "4+") {
+                        showContactMessage();
+                    } else {
+                        answers[`bedrooms-${currentServiceIndex}`] = option;
+                        currentServiceIndex++;
+                        processNextService();
+                    }
                 };
                 optionsDiv.appendChild(button);
             });
