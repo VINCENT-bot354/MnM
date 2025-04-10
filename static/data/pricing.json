@@ -37,8 +37,8 @@
     "Electrical": 0,
     "Other": 0,
     "Moving": {
-        "Small": 15000,
-        "Medium": 25000,
+        "Small": "Contact for Quote",
+        "Medium": "Contact for Quote",
         "Large": "Contact for Quote"
     }
 }
