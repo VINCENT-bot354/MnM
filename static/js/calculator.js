@@ -650,6 +650,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
             });
             
+            // Check if total price is 0
+            if (totalPrice === 0) {
+                const resultContainer = document.getElementById("result");
+                resultContainer.innerHTML = `
+                    <div class="card border-info mb-4 shadow bg-dark text-white border-0">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="m-0">Contact Required</h5>
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="mb-4">Add-on Services</h4>
+                            <p class="card-text">These services are usually add-ons to our main cleaning services. Please contact us directly for a separate quote on these specific services.</p>
+                            <button class="btn btn-primary mt-3" onclick="displayServiceSelection()">Start Over</button>
+                        </div>
+                    </div>
+                `;
+                questionContainer.innerHTML = '';
+                return;
+            }
+
             // Show the result
             const resultContainer = document.getElementById("result");
             resultContainer.innerHTML = `
