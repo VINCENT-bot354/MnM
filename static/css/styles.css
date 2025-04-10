@@ -161,6 +161,25 @@ main {
     gap: 10px;
 }
 
+/* Font Size Controls */
+.font-size-small {
+    font-size: 0.875rem;
+}
+
+.font-size-medium {
+    font-size: 1rem;
+}
+
+.font-size-large {
+    font-size: 1.125rem;
+}
+
+/* For theme toggle */
+.dropdown-item.active, 
+.dropdown-item:active {
+    background-color: var(--bs-primary);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .hero-section {

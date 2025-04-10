@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-bs-theme="dark" id="html-element">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}M&M SLEEK HOME CLEANERS{% endblock %}</title>
     <!-- Bootstrap CSS (Replit theme) -->
-    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" id="bootstrap-theme">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom styles -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     {% block extra_css %}{% endblock %}
 </head>
-<body>
+<body class="font-size-medium">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
         <div class="container">
@@ -23,7 +23,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{{ url_for('index') }}">Home</a>
                     </li>
@@ -40,6 +40,28 @@
                         <a class="nav-link {% if request.path == '/contact' %}active{% endif %}" href="{{ url_for('contact') }}">Contact</a>
                     </li>
                 </ul>
+                
+                <!-- Settings Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" id="settingsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-cog"></i> Settings
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingsDropdown">
+                        <!-- Theme Toggle -->
+                        <li class="px-3 py-2">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="themeToggle" checked>
+                                <label class="form-check-label" for="themeToggle">Dark Mode</label>
+                            </div>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <!-- Font Size -->
+                        <li class="dropdown-header">Font Size</li>
+                        <li><button class="dropdown-item font-size-option" data-size="small">Small</button></li>
+                        <li><button class="dropdown-item font-size-option active" data-size="medium">Medium</button></li>
+                        <li><button class="dropdown-item font-size-option" data-size="large">Large</button></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
@@ -60,7 +82,7 @@
                 <div class="col-md-4 mb-4 mb-md-0">
                     <h5>Contact</h5>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-phone me-2"></i> 015 508304</li>
+                        <li><i class="fas fa-phone me-2"></i> 0115 508304</li>
                         <li><i class="fas fa-phone me-2"></i> 0723 018 066</li>
                         <li><i class="fas fa-phone me-2"></i> 0791 584278</li>
                         <li><i class="fas fa-envelope me-2"></i> info@mmsleekcleaners.com</li>
@@ -95,6 +117,88 @@
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Theme and Font Size Settings -->
+    <script>
+        // Theme toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const htmlElement = document.getElementById('html-element');
+            const bootstrapTheme = document.getElementById('bootstrap-theme');
+            
+            // Check if there's a saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                if (savedTheme === 'light') {
+                    htmlElement.setAttribute('data-bs-theme', 'light');
+                    bootstrapTheme.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';
+                    themeToggle.checked = false;
+                } else {
+                    htmlElement.setAttribute('data-bs-theme', 'dark');
+                    bootstrapTheme.href = 'https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css';
+                    themeToggle.checked = true;
+                }
+            }
+            
+            // Handle theme toggle click
+            themeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    // Dark theme
+                    htmlElement.setAttribute('data-bs-theme', 'dark');
+                    bootstrapTheme.href = 'https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    // Light theme
+                    htmlElement.setAttribute('data-bs-theme', 'light');
+                    bootstrapTheme.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // Font Size functionality
+            const fontSizeOptions = document.querySelectorAll('.font-size-option');
+            const body = document.body;
+            
+            // Check if there's a saved font size preference
+            const savedFontSize = localStorage.getItem('fontSize');
+            if (savedFontSize) {
+                body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
+                body.classList.add(`font-size-${savedFontSize}`);
+                
+                // Update active class on buttons
+                fontSizeOptions.forEach(option => {
+                    if (option.getAttribute('data-size') === savedFontSize) {
+                        option.classList.add('active');
+                    } else {
+                        option.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Handle font size option clicks
+            fontSizeOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const size = this.getAttribute('data-size');
+                    
+                    // Remove all font size classes
+                    body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large');
+                    
+                    // Add selected font size class
+                    body.classList.add(`font-size-${size}`);
+                    
+                    // Save preference
+                    localStorage.setItem('fontSize', size);
+                    
+                    // Update active class
+                    fontSizeOptions.forEach(opt => {
+                        opt.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+    
     {% block extra_js %}{% endblock %}
 </body>
 </html>
