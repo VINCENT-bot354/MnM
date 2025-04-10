@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+        .options button {
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Quote Calculator</h1>
+
+    <div id="questions-container">
+        <!-- Questions will appear here -->
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        // Store all prices for each scenario
+        const pricingData = {
+            "House": {
+                "1": 50,
+                "2": 100,
+                "3": 150,
+                "4+": 200
+            },
+            "Sofa": {
+                "1 seat": 20,
+                "2 seats": 40,
+                "3 seats": 60,
+                "More": 80
+            },
+            "Car": {
+                "Small": 30,
+                "SUV": 50,
+                "Van": 70
+            },
+            "Tank": 150 // Fixed price for tank cleaning
+        };
+
+        // Question Data
+        const questions = [
+            {
+                question: "What do you want cleaned?",
+                options: ["House", "Tank", "Car", "Sofa"]
+            },
+            {
+                question: "How many bathrooms in the house?",
+                options: ["1", "2", "3", "4+"]
+            },
+            {
+                question: "How many seats in the sofa?",
+                options: ["1 seat", "2 seats", "3 seats", "More"]
+            },
+            {
+                question: "What type of car?",
+                options: ["Small", "SUV", "Van"]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let answers = {};
+
+        // Display question
+        function displayQuestion() {
+            const questionContainer = document.getElementById("questions-container");
+            questionContainer.innerHTML = '';
+
+            if (currentQuestionIndex < questions.length) {
+                const question = questions[currentQuestionIndex];
+                const questionDiv = document.createElement("div");
+                questionDiv.className = "question";
+                questionDiv.innerHTML = `<p>${question.question}</p>`;
+
+                const optionsDiv = document.createElement("div");
+                optionsDiv.className = "options";
+
+                question.options.forEach(option => {
+                    const optionButton = document.createElement("button");
+                    optionButton.innerText = option;
+                    optionButton.onclick = () => handleAnswer(option);
+                    optionsDiv.appendChild(optionButton);
+                });
+
+                questionDiv.appendChild(optionsDiv);
+                questionContainer.appendChild(questionDiv);
+            }
+        }
+
+        // Handle Answer
+        function handleAnswer(answer) {
+            const currentQuestion = questions[currentQuestionIndex];
+            answers[currentQuestion.question] = answer;
+
+            // Move to next question
+            currentQuestionIndex++;
+
+            // Show result if it's the last question
+            if (currentQuestionIndex >= questions.length) {
+                calculateQuote();
+            } else {
+                displayQuestion();
+            }
+        }
+
+        // Calculate the quote based on the stored prices
+        function calculateQuote() {
+            let totalPrice = 0;
+
+            // Logic to calculate the price based on user answers
+            if (answers["What do you want cleaned?"] === "House") {
+                const bathrooms = answers["How many bathrooms in the house?"];
+                totalPrice += pricingData["House"][bathrooms] || 0;
+            } else if (answers["What do you want cleaned?"] === "Sofa") {
+                const seats = answers["How many seats in the sofa?"];
+                totalPrice += pricingData["Sofa"][seats] || 0;
+            } else if (answers["What do you want cleaned?"] === "Car") {
+                const carType = answers["What type of car?"];
+                totalPrice += pricingData["Car"][carType] || 0;
+            } else if (answers["What do you want cleaned?"] === "Tank") {
+                totalPrice += pricingData["Tank"];
+            }
+
+            const resultContainer = document.getElementById("result");
+            resultContainer.innerHTML = `<p>The estimated quote for your service is: $${totalPrice}</p>`;
+        }
+
+        // Initial Display
+        displayQuestion();
+    </script>
+
+</body>
+</html>
