@@ -11,13 +11,16 @@
             "2": 160,
             "3": 240,
             "4+": 320
-        },
-        "Floor Only": {
-            "1": 30,
-            "2": 60,
-            "3": 90,
-            "4+": 120
         }
+    },
+    "Office": {
+        "Small": 150,
+        "Medium": 250,
+        "Large": 400
+    },
+    "Carpet": {
+        "price_per_sqm": 15,
+        "min_price": 80
     },
     "Sofa": {
         "price_per_seat": 20,
@@ -28,6 +31,11 @@
         "SUV": 50,
         "Van": 70
     },
-    "Tank": 150,
+    "Tank": {
+        "price_per_liter": 0.5,
+        "min_price": 150
+    },
+    "Plumbing": 100,
+    "Electrical": 120,
     "Other": 100
 }

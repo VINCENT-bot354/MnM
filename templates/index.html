@@ -1,97 +1,171 @@
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cleaning Service Quote Calculator</title>
-    <!-- Bootstrap CSS (Replit theme) -->
-    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% block title %}M&M SLEEK HOME CLEANERS - Professional Cleaning Services{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
     <div class="container">
-        <header class="text-center mb-5">
-            <h1 class="display-4">Cleaning Service Quote Calculator</h1>
-            <p class="lead">Get an instant price estimate for your cleaning needs</p>
-        </header>
-
-        <!-- Error message container (hidden by default) -->
-        <div id="error-container" class="alert alert-danger d-none" role="alert">
-            <i class="fas fa-exclamation-triangle me-2"></i>
-            <span id="error-message">An error occurred.</span>
-        </div>
-
-        <!-- Progress bar -->
-        <div class="progress mb-4">
-            <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%" 
-                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-
-        <!-- Questions container -->
-        <div id="questions-container" class="fade-in">
-            <!-- Questions will be dynamically inserted here -->
-        </div>
-
-        <!-- Results container -->
-        <div id="result" class="fade-in">
-            <!-- Results will be dynamically inserted here -->
-        </div>
-
-        <!-- Information section -->
-        <div class="card mt-5">
-            <div class="card-header">
-                <h5 class="m-0">Why Choose Our Cleaning Services?</h5>
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h1 class="display-4 fw-bold mb-4">Professional Cleaning Services You Can Trust</h1>
+                <p class="lead mb-4">M&M SLEEK HOME CLEANERS provides top-quality cleaning services for homes, offices, and more. Let us take care of the cleaning while you focus on what matters most.</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a href="{{ url_for('quotes') }}" class="btn btn-primary btn-lg px-4 me-md-2">Get a Quote</a>
+                    <a href="{{ url_for('services') }}" class="btn btn-outline-light btn-lg px-4">Our Services</a>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <div class="d-flex align-items-start">
-                            <div class="me-3">
-                                <i class="fas fa-check-circle text-success fa-2x"></i>
-                            </div>
-                            <div>
-                                <h5>Professional Staff</h5>
-                                <p class="text-muted">Our cleaners are trained professionals with years of experience.</p>
-                            </div>
-                        </div>
+            <div class="col-lg-6">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="M&M SLEEK HOME CLEANERS" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Overview -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row text-center justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="mb-4">Our Cleaning Services</h2>
+                <p class="lead mb-5">We offer a wide range of professional cleaning services to meet all your needs. From residential to commercial, our team delivers exceptional results every time.</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 bg-dark text-white border-0 shadow service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-home fa-3x mb-3 text-primary"></i>
+                        <h4 class="card-title">House Cleaning</h4>
+                        <p class="card-text">From standard cleaning to deep cleaning, we ensure your home is spotless and healthy.</p>
+                        <a href="{{ url_for('services') }}#house" class="btn btn-outline-light mt-auto">Learn More</a>
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="d-flex align-items-start">
-                            <div class="me-3">
-                                <i class="fas fa-clock text-success fa-2x"></i>
-                            </div>
-                            <div>
-                                <h5>Time Efficient</h5>
-                                <p class="text-muted">We value your time and ensure prompt service delivery.</p>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 bg-dark text-white border-0 shadow service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-building fa-3x mb-3 text-primary"></i>
+                        <h4 class="card-title">Office Cleaning</h4>
+                        <p class="card-text">Keep your workspace clean and productive with our professional office cleaning services.</p>
+                        <a href="{{ url_for('services') }}#office" class="btn btn-outline-light mt-auto">Learn More</a>
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="d-flex align-items-start">
-                            <div class="me-3">
-                                <i class="fas fa-heart text-success fa-2x"></i>
-                            </div>
-                            <div>
-                                <h5>Satisfaction Guaranteed</h5>
-                                <p class="text-muted">If you're not satisfied, we'll redo the service at no extra cost.</p>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 bg-dark text-white border-0 shadow service-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-couch fa-3x mb-3 text-primary"></i>
+                        <h4 class="card-title">Sofa & Carpet Cleaning</h4>
+                        <p class="card-text">Revitalize your furniture and flooring with our specialized cleaning techniques.</p>
+                        <a href="{{ url_for('services') }}#sofa-carpet" class="btn btn-outline-light mt-auto">Learn More</a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <footer class="mt-5 text-center text-muted">
-            <p>© 2023 Cleaning Service Quote Calculator. All rights reserved.</p>
-        </footer>
+        <div class="text-center mt-5">
+            <a href="{{ url_for('services') }}" class="btn btn-primary btn-lg">View All Services</a>
+        </div>
     </div>
+</section>
 
-    <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script src="{{ url_for('static', filename='js/calculator.js') }}"></script>
-</body>
-</html>
+<!-- Call to Action -->
+<section class="bg-primary text-white section-padding">
+    <div class="container text-center">
+        <h2 class="mb-4">Ready to Get Started?</h2>
+        <p class="lead mb-4">Get a custom quote for your cleaning needs in just a few clicks.</p>
+        <a href="{{ url_for('quotes') }}" class="btn btn-light btn-lg">Calculate Your Quote</a>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row text-center justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="mb-4">Why Choose M&M SLEEK HOME CLEANERS?</h2>
+                <p class="lead mb-5">We're committed to delivering the highest quality cleaning services with a focus on reliability, attention to detail, and customer satisfaction.</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <i class="fas fa-check-circle fa-3x mb-3 text-primary"></i>
+                    <h4>Experienced Team</h4>
+                    <p>Our professional cleaners are trained to deliver exceptional service every time.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <i class="fas fa-clock fa-3x mb-3 text-primary"></i>
+                    <h4>Reliable & Punctual</h4>
+                    <p>We respect your time and always arrive as scheduled to complete work efficiently.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <i class="fas fa-leaf fa-3x mb-3 text-primary"></i>
+                    <h4>Eco-Friendly Products</h4>
+                    <p>We use environmentally responsible cleaning products that are safe for your family and pets.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row text-center justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="mb-4">What Our Clients Say</h2>
+                <p class="lead mb-5">Don't just take our word for it—hear from our satisfied customers.</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="testimonial shadow">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-0">Sarah J.</h5>
+                            <small class="text-muted">Homeowner</small>
+                        </div>
+                    </div>
+                    <p class="mb-0">"The team at M&M SLEEK HOME CLEANERS was professional, thorough, and attentive to detail. My house has never looked better!"</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial shadow">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-0">Michael T.</h5>
+                            <small class="text-muted">Business Owner</small>
+                        </div>
+                    </div>
+                    <p class="mb-0">"We use M&M for our office cleaning and they consistently deliver excellent results. Highly recommend their services for any business."</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial shadow">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-0">Rachel K.</h5>
+                            <small class="text-muted">Apartment Manager</small>
+                        </div>
+                    </div>
+                    <p class="mb-0">"Their carpet and sofa cleaning services are exceptional. Residents are always impressed with how they can make old furniture look new again."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

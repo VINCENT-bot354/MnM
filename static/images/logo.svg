@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" width="500" height="300">
+  <!-- House with roof -->
+  <polygon points="250,50 150,150 350,150" fill="#ffffff" />
+  <rect x="175" y="150" width="150" height="20" fill="#ffffff" />
+  
+  <!-- Lines on roof -->
+  <path d="M170,135 L330,135 M180,125 L320,125 M190,115 L310,115 M200,105 L300,105 M210,95 L290,95 M220,85 L280,85 M230,75 L270,75" 
+        stroke="#ffffff" stroke-width="4" fill="none" />
+
+  <!-- Cross window on house -->
+  <circle cx="250" cy="115" r="15" fill="none" stroke="#ffffff" stroke-width="4" />
+  <line x1="240" y1="115" x2="260" y2="115" stroke="#ffffff" stroke-width="4" />
+  <line x1="250" y1="105" x2="250" y2="125" stroke="#ffffff" stroke-width="4" />
+
+  <!-- Chimney -->
+  <rect x="290" y="60" width="15" height="35" fill="#ffffff" />
+  <circle cx="297" cy="50" r="5" fill="#ffffff" />
+  
+  <!-- Horizontal lines beside house -->
+  <line x1="150" y1="150" x2="100" y2="150" stroke="#ffffff" stroke-width="7" />
+  <line x1="350" y1="150" x2="400" y2="150" stroke="#ffffff" stroke-width="7" />
+  <line x1="150" y1="165" x2="100" y2="165" stroke="#ffffff" stroke-width="7" />
+  <line x1="350" y1="165" x2="400" y2="165" stroke="#ffffff" stroke-width="7" />
+  
+  <!-- M letters -->
+  <path d="M120,185 L120,245 L135,225 L150,245 L150,185" fill="#ffffff" stroke="#ffffff" stroke-width="5" />
+  <path d="M380,185 L380,245 L365,225 L350,245 L350,185" fill="#ffffff" stroke="#ffffff" stroke-width="5" />
+  
+  <!-- & symbol -->
+  <path d="M250,200 C235,200 225,210 225,225 C225,240 235,250 250,250 C265,250 275,240 275,225 C275,215 265,200 250,200 M250,225 C245,235 240,250 250,255 C260,260 270,245 260,235" 
+        fill="#ffffff" stroke="#ffffff" stroke-width="5" />
+  
+  <!-- Text "HOME CLEANERS" -->
+  <text x="250" y="280" text-anchor="middle" fill="#ffffff" font-family="Arial" font-weight="bold" font-size="24">HOME CLEANERS</text>
+  
+  <!-- Small decorative diamonds -->
+  <rect x="170" y="265" width="8" height="8" transform="rotate(45 174 269)" fill="#ffffff" />
+  <rect x="330" y="265" width="8" height="8" transform="rotate(45 334 269)" fill="#ffffff" />
+  <rect x="250" y="295" width="8" height="8" transform="rotate(45 254 299)" fill="#ffffff" />
+  
+  <!-- Bottom line -->
+  <line x1="180" y1="285" x2="320" y2="285" stroke="#ffffff" stroke-width="4" />
+</svg>
