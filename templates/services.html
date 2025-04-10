@@ -171,7 +171,7 @@
                                 <h5 class="mb-0">Sofa Cleaning</h5>
                             </div>
                             <div class="card-body">
-                                <p><span class="highlight">$20</span> per seat (minimum $20)</p>
+                                <p><span class="highlight">${{ pricing.Sofa.price_per_seat }}</span> per seat (minimum ${{ pricing.Sofa.min_price }})</p>
                                 <p class="small">Price depends on size and condition. All fabrics treated with care.</p>
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                                 <h5 class="mb-0">Carpet Cleaning</h5>
                             </div>
                             <div class="card-body">
-                                <p><span class="highlight">$15</span> per square meter (minimum $80)</p>
+                                <p><span class="highlight">${{ pricing.Carpet.price_per_sqm }}</span> per square meter (minimum ${{ pricing.Carpet.min_price }})</p>
                                 <p class="small">Deep steam cleaning that removes stains and refreshes your carpets.</p>
                             </div>
                         </div>
@@ -223,15 +223,15 @@
                         <ul class="list-group list-group-flush bg-transparent text-start mb-4">
                             <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between">
                                 <span>Small Car</span>
-                                <span class="fw-bold">$30</span>
+                                <span class="fw-bold">${{ pricing.Car.Small }}</span>
                             </li>
                             <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between">
                                 <span>SUV</span>
-                                <span class="fw-bold">$50</span>
+                                <span class="fw-bold">${{ pricing.Car.SUV }}</span>
                             </li>
                             <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between">
                                 <span>Van</span>
-                                <span class="fw-bold">$70</span>
+                                <span class="fw-bold">${{ pricing.Car.Van }}</span>
                             </li>
                         </ul>
                     </div>
@@ -244,7 +244,7 @@
                         <i class="fas fa-water fa-3x mb-3 text-primary"></i>
                         <h4 class="card-title">Tank Cleaning</h4>
                         <p>Professional cleaning and sanitizing of water tanks.</p>
-                        <p class="my-3"><span class="highlight">$0.50</span> per liter (minimum $150)</p>
+                        <p class="my-3"><span class="highlight">${{ pricing.Tank.price_per_liter }}</span> per liter (minimum ${{ pricing.Tank.min_price }})</p>
                         <p class="small">Includes complete draining, sanitizing, and refilling.</p>
                     </div>
                 </div>
@@ -258,15 +258,15 @@
                         <ul class="list-group list-group-flush bg-transparent text-start mb-4">
                             <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between">
                                 <span>Plumbing Services</span>
-                                <span class="fw-bold">$100</span>
+                                <span class="fw-bold">${{ pricing.Plumbing }}</span>
                             </li>
                             <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between">
                                 <span>Electrical Services</span>
-                                <span class="fw-bold">$120</span>
+                                <span class="fw-bold">${{ pricing.Electrical }}</span>
                             </li>
                             <li class="list-group-item bg-dark text-white border-light d-flex justify-content-between">
                                 <span>Other Services</span>
-                                <span class="fw-bold">$100</span>
+                                <span class="fw-bold">${{ pricing.Other }}</span>
                             </li>
                         </ul>
                     </div>
