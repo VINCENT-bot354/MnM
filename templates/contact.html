@@ -60,22 +60,22 @@
                 <div class="card bg-dark shadow h-100">
                     <div class="card-body">
                         <h3 class="card-title mb-4">Send Us a Message</h3>
-                        <form>
+                        <form id="contactForm" onsubmit="handleSubmit(event)">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Your Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                                <input type="text" class="form-control" id="name" name="name" required placeholder="Enter your name">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                                <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email">
                             </div>
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                                <input type="tel" class="form-control" id="phone" name="phone" required placeholder="Enter your phone number">
                             </div>
                             <div class="mb-3">
                                 <label for="service" class="form-label">Service Interested In</label>
-                                <select class="form-select" id="service">
+                                <select class="form-select" id="service" name="service" required>
                                     <option selected>Select a service</option>
                                     <option value="house">House Cleaning</option>
                                     <option value="office">Office Cleaning</option>
@@ -90,7 +90,7 @@
                             </div>
                             <div class="mb-4">
                                 <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control" id="message" rows="4" placeholder="Tell us about your cleaning needs"></textarea>
+                                <textarea class="form-control" id="message" name="message" rows="4" required placeholder="Tell us about your cleaning needs"></textarea>
                             </div>
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary">Send Message</button>
@@ -102,6 +102,30 @@
         </div>
     </div>
 </section>
+
+<script>
+function handleSubmit(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const service = document.getElementById('service').value;
+    const message = document.getElementById('message').value;
+    
+    const subject = `New Service Request from ${name}`;
+    const body = `Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Service Interested: ${service}
+
+Message:
+${message}`;
+
+    const mailtoLink = `mailto:mnmsleekhomecleaners@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+}
+</script>
 
 <!-- Call to Action -->
 <section class="bg-primary text-white section-padding">
