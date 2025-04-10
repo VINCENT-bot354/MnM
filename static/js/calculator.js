@@ -123,6 +123,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert("Please select at least one service");
                 return;
             }
+
+            // Check if only add-on services are selected
+            const addOnServices = ["Car", "Plumbing", "Electrical", "Other"];
+            const selectedValues = Array.from(checkboxes).map(cb => cb.value);
+            const hasOnlyAddOns = selectedValues.every(service => addOnServices.includes(service));
+
+            if (hasOnlyAddOns) {
+                const resultContainer = document.getElementById("result");
+                resultContainer.innerHTML = `
+                    <div class="card border-info mb-4 shadow bg-dark text-white border-0">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="m-0">Contact Required</h5>
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="mb-4">Add-on Services Only</h4>
+                            <p class="card-text">These services are normally provided as add-ons to our main cleaning services. Please contact us directly for a custom quote if you wish to receive only these specific services.</p>
+                            <button class="btn btn-primary mt-3" onclick="displayServiceSelection()">Start Over</button>
+                        </div>
+                    </div>
+                `;
+                questionContainer.innerHTML = '';
+                return;
+            }
             
             // Store selected services
             checkboxes.forEach(checkbox => {
