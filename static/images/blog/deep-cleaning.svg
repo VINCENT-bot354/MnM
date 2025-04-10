@@ -1,0 +1,5 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#0d6efd"/>
+  <text x="400" y="200" font-family="Arial" font-size="40" text-anchor="middle" fill="white">Deep Cleaning Image</text>
+  <text x="400" y="250" font-family="Arial" font-size="20" text-anchor="middle" fill="white">Replace with your image</text>
+</svg>
