@@ -3,44 +3,44 @@
     "House": {
         "Standard": {
             "bedrooms": {
-                "1": 2000,
-                "2": 3500,
-                "3": 5000,
-                "4+": 6500
+                "1": 3000,
+                "2": 6000,
+                "3": 9000,
+                "4+": 12000
             }
         },
         "Deep Cleaning": {
             "bedrooms": {
-                "1": 3000,
+                "1": 4000,
                 "2": 8000,
-                "3": 7000,
-                "4+": 9000
+                "3": 12000,
+                "4+":16000 
             }
         }
     },
     "Office": {
-        "Small": 19500,
-        "Medium": 32500,
-        "Large": 52000
+        "Small": 2000,
+        "Medium": 3000,
+        "Large": 5000
     },
     "Carpet": {
-        "price_per_sqm": 1950,
-        "min_price": 10400
+        "price_per_sqfoot": 15,
+        "min_price": 450
     },
     "Sofa": {
-        "price_per_seat": 2600,
-        "min_price": 2600
+        "price_per_seat": 500,
+        "min_price": 500
     },
     "Car": {
-        "Small": 3900,
-        "SUV": 6500,
-        "Van": 9100
+        "Small": 0,
+        "SUV": 0,
+        "Van": 0
     },
     "Tank": {
-        "price_per_liter": 65,
-        "min_price": 19500
+        "price_per_liter": 0.5,
+        "min_price": 500
     },
-    "Plumbing": 13000,
-    "Electrical": 15600,
-    "Other": 13000
+    "Plumbing": 0,
+    "Electrical": 0,
+    "Other": 0
 }
