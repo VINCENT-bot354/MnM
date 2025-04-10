@@ -166,19 +166,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const optionsDiv = document.createElement("div");
             optionsDiv.className = "d-grid gap-2";
             
-            const cleaningTypes = ["Standard", "Deep Cleaning"];
-            
-            cleaningTypes.forEach(type => {
-                const button = document.createElement("button");
-                button.className = "btn btn-outline-primary";
-                button.textContent = type;
-                button.onclick = () => {
-                    currentCleaningType = type;
-                    answers[`house-cleaning-type-${currentServiceIndex}`] = type;
-                    displayBedroomQuestion();
-                };
-                optionsDiv.appendChild(button);
-            });
+            const button = document.createElement("button");
+            button.className = "btn btn-outline-primary";
+            button.textContent = "Deep Cleaning";
+            button.onclick = () => {
+                currentCleaningType = "Deep Cleaning";
+                answers[`house-cleaning-type-${currentServiceIndex}`] = "Deep Cleaning";
+                displayBedroomQuestion();
+            };
+            optionsDiv.appendChild(button);
             
             cardBody.appendChild(optionsDiv);
             card.appendChild(cardBody);
